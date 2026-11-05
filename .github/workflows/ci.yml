@@ -2,16 +2,8 @@ name: swarmproof CI
 
 on:
   push:
-    paths:
-      - "product/swarmproof/**"
   pull_request:
-    paths:
-      - "product/swarmproof/**"
   workflow_dispatch:
-
-defaults:
-  run:
-    working-directory: product/swarmproof
 
 jobs:
   tests:
