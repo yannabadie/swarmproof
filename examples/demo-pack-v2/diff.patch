@@ -1,0 +1,25 @@
+--- a/src/cache.py
++++ b/src/cache.py
+@@ -27,9 +27,7 @@
+         """Invalide toutes les clés commençant par `prefix` ; renvoie le nombre supprimé."""
+         removed = 0
+         for key in list(self._entries):
+-            # BUG: comparaison d'égalité au lieu de startswith -> les clés préfixées
+-            # restent en cache.
+-            if key == prefix:
++            if key.startswith(prefix):
+                 del self._entries[key]
+                 removed += 1
+         return removed
+--- a/src/store.py
++++ b/src/store.py
+@@ -10,8 +10,7 @@
+ 
+     def put(self, key: str, value: str) -> None:
+         self._data[key] = value
+-        # BUG: le compteur de version n'est jamais incrémenté -> les caches ne voient
+-        # jamais de changement et servent des valeurs périmées.
++        self.version += 1
+ 
+     def get(self, key: str) -> str | None:
+         return self._data.get(key)

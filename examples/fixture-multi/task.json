@@ -1,0 +1,5 @@
+{
+  "id": "M1_cache_invalidation",
+  "title": "Cache TTL : invalidation par version et par préfixe cassée",
+  "context": "Le petit service utilise un cache TTL adossé à un Store versionné. Deux tests échouent : (1) après un put() dans le Store, le cache continue de servir l'ancienne valeur (invalidation par version cassée) ; (2) invalidate_prefix() ne supprime que la clé exacte et laisse les clés préfixées en cache. Corrige les fichiers source concernés pour que la suite passe. Ne modifie pas les tests."
+}

@@ -1,0 +1,6 @@
+{
+  "id": "T1_date_parse",
+  "title": "Parsing de dates RFC 3339 et conversion UTC",
+  "context": "Le module `src/dateutils.py` parse des horodatages RFC 3339 pour la facturation. Deux tests de fuseau horaire échouent : les dates ne sont pas normalisées en UTC. Corrige `parse_rfc3339` (et ce qui en dépend) pour que la conversion en date UTC soit correcte.",
+  "test_command": "python -m unittest discover -s tests -v"
+}

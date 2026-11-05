@@ -1,0 +1,1395 @@
+{
+  "checks": {
+    "DOC-01": {
+      "category": "docs",
+      "references": {
+        "ai_act": [
+          "art. 50"
+        ],
+        "iso_42001": [
+          "A.8.2",
+          "A.9.2"
+        ],
+        "owasp_agentic": [
+          "ASI09"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "DOC-02": {
+      "category": "docs",
+      "references": {
+        "ai_act": [
+          "art. 15",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "A.3.2",
+          "A.9.2"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "DOC-03": {
+      "category": "docs",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "medium",
+      "status": "warn"
+    },
+    "DOC-04": {
+      "category": "docs",
+      "references": {
+        "ai_act": [
+          "art. 26"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI09"
+        ]
+      },
+      "severity": "medium",
+      "status": "pass"
+    },
+    "EGRESS-01": {
+      "category": "egress",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "EGRESS-02": {
+      "category": "egress",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "EGRESS-03": {
+      "category": "egress",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "EGRESS-04": {
+      "category": "egress",
+      "references": {
+        "ai_act": [
+          "art. 12"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI05"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "EGRESS-05": {
+      "category": "egress",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05"
+        ]
+      },
+      "severity": "low",
+      "status": "unknown"
+    },
+    "EVAL-01": {
+      "category": "evals",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "severity": "high",
+      "status": "warn"
+    },
+    "EVAL-02": {
+      "category": "evals",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "severity": "medium",
+      "status": "warn"
+    },
+    "EVAL-03": {
+      "category": "evals",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI01",
+          "ASI02"
+        ]
+      },
+      "severity": "medium",
+      "status": "warn"
+    },
+    "EVAL-04": {
+      "category": "evals",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "EVAL-05": {
+      "category": "evals",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "medium",
+      "status": "fail"
+    },
+    "HITL-01": {
+      "category": "hitl",
+      "references": {
+        "ai_act": [
+          "art. 14"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI09",
+          "ASI10"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "HITL-02": {
+      "category": "hitl",
+      "references": {
+        "ai_act": [
+          "art. 14",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI09"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "HITL-03": {
+      "category": "hitl",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 14"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI09"
+        ]
+      },
+      "severity": "medium",
+      "status": "fail"
+    },
+    "HITL-04": {
+      "category": "hitl",
+      "references": {
+        "ai_act": [
+          "art. 14"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.9.2"
+        ],
+        "owasp_agentic": [
+          "ASI09",
+          "ASI10"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "INTEGRITY-01": {
+      "category": "integrity",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI10",
+          "ASI04"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "INTEGRITY-02": {
+      "category": "integrity",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI10"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "INTEGRITY-03": {
+      "category": "integrity",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI10"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "LOG-01": {
+      "category": "logging",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "LOG-02": {
+      "category": "logging",
+      "references": {
+        "ai_act": [
+          "art. 12"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "LOG-03": {
+      "category": "logging",
+      "references": {
+        "ai_act": [
+          "art. 12"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08",
+          "ASI10"
+        ]
+      },
+      "severity": "critical",
+      "status": "fail"
+    },
+    "LOG-04": {
+      "category": "logging",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "LOG-05": {
+      "category": "logging",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.7.4",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI06"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "LOG-06": {
+      "category": "logging",
+      "references": {
+        "ai_act": [
+          "art. 12"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "MCP-01": {
+      "category": "mcp",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI07"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "MCP-02": {
+      "category": "mcp",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "MCP-03": {
+      "category": "mcp",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI02"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "MCP-04": {
+      "category": "mcp",
+      "references": {
+        "ai_act": [
+          "art. 15",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI07"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "MCP-05": {
+      "category": "mcp",
+      "references": {
+        "ai_act": [
+          "art. 14",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI08"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "MODEL-01": {
+      "category": "models",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "MODEL-02": {
+      "category": "models",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "medium",
+      "status": "warn"
+    },
+    "MODEL-03": {
+      "category": "models",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "MODEL-04": {
+      "category": "models",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "PRIVACY-01": {
+      "category": "privacy",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.7.4",
+          "A.5.2"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI06"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "PRIVACY-02": {
+      "category": "privacy",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "A.7.4",
+          "A.9.2"
+        ],
+        "owasp_agentic": [
+          "ASI06"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "PRIVACY-03": {
+      "category": "privacy",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.7.4",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI03"
+        ]
+      },
+      "severity": "medium",
+      "status": "warn"
+    },
+    "PRIVACY-04": {
+      "category": "privacy",
+      "references": {
+        "ai_act": [
+          "art. 26",
+          "art. 50"
+        ],
+        "iso_42001": [
+          "4.1",
+          "A.5.2",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI09"
+        ]
+      },
+      "severity": "medium",
+      "status": "fail"
+    },
+    "PROMPT-01": {
+      "category": "prompts",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI01"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "PROMPT-02": {
+      "category": "prompts",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI01",
+          "ASI06"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "PROMPT-03": {
+      "category": "prompts",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI01",
+          "ASI06"
+        ]
+      },
+      "severity": "medium",
+      "status": "fail"
+    },
+    "PROMPT-04": {
+      "category": "prompts",
+      "references": {
+        "ai_act": [
+          "art. 50"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI01",
+          "ASI09"
+        ]
+      },
+      "severity": "medium",
+      "status": "fail"
+    },
+    "PROMPT-05": {
+      "category": "prompts",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI01"
+        ]
+      },
+      "severity": "medium",
+      "status": "warn"
+    },
+    "PROVIDER-01": {
+      "category": "providers",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "PROVIDER-02": {
+      "category": "providers",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "PROVIDER-03": {
+      "category": "providers",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "severity": "low",
+      "status": "warn"
+    },
+    "SANDBOX-01": {
+      "category": "sandbox",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "SANDBOX-02": {
+      "category": "sandbox",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "SANDBOX-03": {
+      "category": "sandbox",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05",
+          "ASI02"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "SANDBOX-04": {
+      "category": "sandbox",
+      "references": {
+        "ai_act": [
+          "art. 14",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05",
+          "ASI10"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "SANDBOX-05": {
+      "category": "sandbox",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05",
+          "ASI07"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "SECRET-01": {
+      "category": "secrets",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI04"
+        ]
+      },
+      "severity": "critical",
+      "status": "pass"
+    },
+    "SECRET-02": {
+      "category": "secrets",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI04"
+        ]
+      },
+      "severity": "critical",
+      "status": "pass"
+    },
+    "SECRET-03": {
+      "category": "secrets",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "high",
+      "status": "warn"
+    },
+    "SECRET-04": {
+      "category": "secrets",
+      "references": {
+        "ai_act": [
+          "art. 15",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "A.2.2",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "medium",
+      "status": "fail"
+    },
+    "SUPPLY-01": {
+      "category": "supply",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "critical",
+      "status": "unknown"
+    },
+    "SUPPLY-02": {
+      "category": "supply",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "SUPPLY-03": {
+      "category": "supply",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "SUPPLY-04": {
+      "category": "supply",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "high",
+      "status": "unknown"
+    },
+    "SUPPLY-05": {
+      "category": "supply",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "medium",
+      "status": "unknown"
+    },
+    "SUPPLY-06": {
+      "category": "supply",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "severity": "low",
+      "status": "unknown"
+    },
+    "TOOL-01": {
+      "category": "tools",
+      "references": {
+        "ai_act": [
+          "art. 14",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "TOOL-02": {
+      "category": "tools",
+      "references": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "severity": "critical",
+      "status": "pass"
+    },
+    "TOOL-03": {
+      "category": "tools",
+      "references": {
+        "ai_act": [
+          "art. 14",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "severity": "high",
+      "status": "fail"
+    },
+    "TOOL-04": {
+      "category": "tools",
+      "references": {
+        "ai_act": [
+          "art. 14"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI03"
+        ]
+      },
+      "severity": "medium",
+      "status": "warn"
+    },
+    "TOOL-05": {
+      "category": "tools",
+      "references": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI08"
+        ]
+      },
+      "severity": "medium",
+      "status": "fail"
+    }
+  },
+  "disclaimer": "Mapping indicatif fourni à titre de repère. Il ne constitue ni un avis juridique, ni une preuve de conformité, ni une certification AI Act / ISO 42001.",
+  "frameworks": [
+    {
+      "entries": {
+        "art. 12": {
+          "note": "Tenue de journaux sur la durée de vie du système à haut risque, traçabilité des événements.",
+          "title": "Record-keeping / journalisation automatique"
+        },
+        "art. 14": {
+          "note": "Capacité humaine de surveiller, interrompre ou corriger le système.",
+          "title": "Human oversight / supervision humaine"
+        },
+        "art. 15": {
+          "note": "Exactitude, robustesse et cybersécurité, y compris résistance aux manipulations.",
+          "title": "Accuracy, robustness, cybersecurity"
+        },
+        "art. 26": {
+          "note": "Surveillance, conservation des logs, information des travailleurs, usage conforme.",
+          "title": "Obligations des déployeurs"
+        },
+        "art. 50": {
+          "note": "Informer l'utilisateur qu'il interagit avec une IA et étiqueter les contenus générés.",
+          "title": "Transparence"
+        }
+      },
+      "findings_by_reference": {
+        "art. 12": 10,
+        "art. 14": 5,
+        "art. 15": 23,
+        "art. 26": 7,
+        "art. 50": 3
+      },
+      "key": "ai_act",
+      "name": "EU AI Act (Règlement (UE) 2024/1689)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
+    },
+    {
+      "entries": {
+        "10.2": {
+          "note": "Non-conformités, actions correctives et amélioration.",
+          "title": "Amélioration continue"
+        },
+        "4.1": {
+          "note": "Enjeux internes/externes et parties intéressées du système d'IA.",
+          "title": "Contexte de l'organisation"
+        },
+        "6.1.2": {
+          "note": "Identifier et évaluer les risques du système d'IA.",
+          "title": "Appréciation des risques IA"
+        },
+        "6.2": {
+          "note": "Objectifs mesurables et critères d'acceptation.",
+          "title": "Objectifs du système d'IA"
+        },
+        "8.2": {
+          "note": "Mise en œuvre des traitements et contrôles retenus.",
+          "title": "Gestion des risques IA"
+        },
+        "8.3": {
+          "note": "Développement, vérification, déploiement, surveillance.",
+          "title": "Cycle de vie du système d'IA"
+        },
+        "9.1": {
+          "note": "Indicateurs et preuves de performance du SMI.",
+          "title": "Surveillance, mesure, analyse, évaluation"
+        },
+        "9.2": {
+          "note": "Audits planifiés du système de management de l'IA.",
+          "title": "Audit interne"
+        },
+        "A.10.1": {
+          "note": "Maîtrise des composants, modèles et services tiers.",
+          "title": "Fournisseurs et tiers"
+        },
+        "A.2.2": {
+          "note": "Politique documentée et alignée avec la stratégie.",
+          "title": "Politique et objectifs IA"
+        },
+        "A.3.2": {
+          "note": "Responsabilités attribuées et comprises.",
+          "title": "Rôles et responsabilités IA"
+        },
+        "A.5.2": {
+          "note": "Évaluation des impacts sur les personnes et la société.",
+          "title": "Appréciation d'impact"
+        },
+        "A.6.2.4": {
+          "note": "Preuves de vérification du système et des composants.",
+          "title": "Vérification et validation"
+        },
+        "A.7.4": {
+          "note": "Exactitude, complétude, protection des données utilisées.",
+          "title": "Qualité des données"
+        },
+        "A.8.2": {
+          "note": "Documentation destinée aux utilisateurs et parties prenantes.",
+          "title": "Information des parties intéressées"
+        },
+        "A.9.2": {
+          "note": "Usage conforme aux politiques et aux limites déclarées.",
+          "title": "Utilisation responsable"
+        }
+      },
+      "findings_by_reference": {
+        "10.2": 0,
+        "4.1": 1,
+        "6.1.2": 0,
+        "6.2": 0,
+        "8.2": 9,
+        "8.3": 11,
+        "9.1": 9,
+        "9.2": 0,
+        "A.10.1": 3,
+        "A.2.2": 1,
+        "A.3.2": 1,
+        "A.5.2": 2,
+        "A.6.2.4": 16,
+        "A.7.4": 9,
+        "A.8.2": 6,
+        "A.9.2": 3
+      },
+      "key": "iso_42001",
+      "name": "ISO/IEC 42001:2023 — AI management system",
+      "url": "https://www.iso.org/standard/42001"
+    },
+    {
+      "entries": {
+        "ASI01": {
+          "note": "Détournement des objectifs de l'agent via contenu non fiable.",
+          "title": "Agent Goal Hijack"
+        },
+        "ASI02": {
+          "note": "Usage abusif ou détourné des outils exposés.",
+          "title": "Tool Misuse & Exploitation"
+        },
+        "ASI03": {
+          "note": "Usurpation d'identité ou élévation de privilèges de l'agent.",
+          "title": "Identity & Privilege Abuse"
+        },
+        "ASI04": {
+          "note": "Dépendances, modèles, serveurs MCP et outils tiers compromis.",
+          "title": "Agentic Supply Chain Vulnerabilities"
+        },
+        "ASI05": {
+          "note": "Exécution de code non prévue (shell, génération dynamique, RCE).",
+          "title": "Unexpected Code Execution"
+        },
+        "ASI06": {
+          "note": "Empoisonnement de la mémoire, du RAG ou du contexte persistant.",
+          "title": "Memory & Context Poisoning"
+        },
+        "ASI07": {
+          "note": "Canaux agent-à-agent non authentifiés ou non contrôlés.",
+          "title": "Insecure Inter-Agent Communication"
+        },
+        "ASI08": {
+          "note": "Propagation d'erreurs et défaillances en chaîne.",
+          "title": "Cascading Failures"
+        },
+        "ASI09": {
+          "note": "Exploitation de la confiance de l'humain dans l'agent.",
+          "title": "Human-Agent Trust Exploitation"
+        },
+        "ASI10": {
+          "note": "Agents dérivant des politiques, échappant à la supervision.",
+          "title": "Rogue Agents"
+        }
+      },
+      "findings_by_reference": {
+        "ASI01": 6,
+        "ASI02": 7,
+        "ASI03": 4,
+        "ASI04": 9,
+        "ASI05": 4,
+        "ASI06": 5,
+        "ASI07": 0,
+        "ASI08": 9,
+        "ASI09": 5,
+        "ASI10": 2
+      },
+      "key": "owasp_agentic",
+      "name": "OWASP Top 10 for Agentic Applications (2026)",
+      "url": "https://genai.owasp.org/"
+    }
+  ],
+  "schema": "agentproof.mapping.v1"
+}

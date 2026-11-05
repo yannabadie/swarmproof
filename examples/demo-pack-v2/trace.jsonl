@@ -1,0 +1,17 @@
+{"ts": "2026-11-05T18:12:45.035+00:00", "event": "run_start", "repo": "<repo>", "mode": "lead_support", "roles": {"lead": "codex", "support": "claude"}, "dry_run": false, "oracle": "python -m unittest discover -s tests -v", "max_calls": 3, "max_retries": 1}
+{"ts": "2026-11-05T18:12:45.038+00:00", "event": "repo_prepared", "targets": ["src/__init__.py", "src/api.py", "src/cache.py", "src/store.py"], "test_paths": ["tests"]}
+{"ts": "2026-11-05T18:12:45.038+00:00", "event": "prepack_start"}
+{"ts": "2026-11-05T18:12:45.058+00:00", "event": "prepack_end", "status": "ok", "score": 25.0}
+{"ts": "2026-11-05T18:12:45.090+00:00", "event": "engine_built", "version": {"version": "12.4.0", "codename": "COGNITIVE BOOST"}, "build_seconds": 0.032, "registry_ids": ["claude", "gemini"], "agent_mapping": {"lead_agent": "codex", "support_agent": "claude"}, "mode": "lead_support"}
+{"ts": "2026-11-05T18:12:45.091+00:00", "event": "engine_task_built", "task_chars": 5395}
+{"ts": "2026-11-05T18:12:45.101+00:00", "event": "agent_invocation", "role": "lead", "agent_id": "lead_agent", "provider": "codex", "task_type": "execution", "context_chars": 5457}
+{"ts": "2026-11-05T18:12:45.101+00:00", "event": "model_call", "role": "lead", "provider": "codex", "attempt": 1, "phase": "start"}
+{"ts": "2026-11-05T18:13:06.716+00:00", "event": "model_call", "role": "lead", "provider": "codex", "attempt": 1, "phase": "ok", "output_chars": 1658, "duration_seconds": 21.61, "tokens_in": null, "tokens_out": null, "tokens_total": null, "cost_usd": null, "model": null, "prompt_sha256": "10d39c4d5d03e7fefe6e573b4a41894ea9266e1ca836ddd0f3b2ca71f507ff5b"}
+{"ts": "2026-11-05T18:13:06.716+00:00", "event": "agent_invocation", "role": "support", "agent_id": "support_agent", "provider": "claude", "task_type": "execution", "context_chars": 7182}
+{"ts": "2026-11-05T18:13:06.716+00:00", "event": "model_call", "role": "support", "provider": "claude", "attempt": 1, "phase": "start"}
+{"ts": "2026-11-05T18:13:55.574+00:00", "event": "model_call", "role": "support", "provider": "claude", "attempt": 1, "phase": "ok", "output_chars": 2646, "duration_seconds": 48.86, "tokens_in": 2, "tokens_out": 5204, "tokens_total": null, "cost_usd": 0.164584, "model": "claude-opus-5-5", "prompt_sha256": "19b51039fb059be741706d462ea3caff28e690595dab2443e6f6e516d4557899"}
+{"ts": "2026-11-05T18:13:55.576+00:00", "event": "engine_result", "declared_status": "SwarmPhase.COMPLETED", "selected_mode": "lead_support", "engine_ok": true, "engine_errors": 0, "retries": 0, "duration_seconds": 70.48}
+{"ts": "2026-11-05T18:13:55.576+00:00", "event": "candidate_set_parsed", "agent_id": "lead_agent", "role": "lead", "n_files": 2, "files": [{"path": "src/cache.py", "chars": 1025}, {"path": "src/store.py", "chars": 549}], "raw_sha256": "1c56cf49e0ac21dadf5b66d9dd53d09179cd07467a61737d71c8cd73cb12f278"}
+{"ts": "2026-11-05T18:13:55.576+00:00", "event": "candidate_rejected", "reason": "aucun bloc de code complet détecté", "detail": "", "agent_id": "support_agent", "role": "support"}
+{"ts": "2026-11-05T18:13:55.622+00:00", "event": "oracle_attempt", "attempt": 0, "files": 2, "passed": true, "exit_code": 0, "tests_run": 4, "failed": 0, "timed_out": false}
+{"ts": "2026-11-05T18:13:55.625+00:00", "event": "verdict", "verdict": "PASS", "reason": "oracle PASS sur la tentative 0", "basis": "oracle"}

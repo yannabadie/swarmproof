@@ -1,0 +1,1947 @@
+{
+  "checks": [
+    {
+      "category": "docs",
+      "category_label": "Documentation & limites",
+      "detail": "Aucune documentation des limites ou des cas non couverts : le périmètre réel est indiscernable.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "DOC-01",
+      "mapping": {
+        "ai_act": [
+          "art. 50"
+        ],
+        "iso_42001": [
+          "A.8.2",
+          "A.9.2"
+        ],
+        "owasp_agentic": [
+          "ASI09"
+        ]
+      },
+      "rationale": "Un client ne peut pas évaluer le périmètre réel d'un agent si le fournisseur ne déclare pas ses limites.",
+      "remediation": "Publier une section Limitations/cas non couverts, datée, liée depuis le README et mise à jour à chaque release.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Limites et cas non couverts documentés"
+    },
+    {
+      "category": "docs",
+      "category_label": "Documentation & limites",
+      "detail": "Aucune politique de divulgation de vulnérabilité (SECURITY.md / contact).",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "DOC-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "A.3.2",
+          "A.9.2"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Sans canal de signalement, un chercheur ou un client découvrant une faille n'a pas de chemin de remontée maîtrisé.",
+      "remediation": "Créer SECURITY.md à la racine avec contact, délais de réponse et périmètre de divulgation responsable.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Politique de divulgation de vulnérabilités"
+    },
+    {
+      "category": "docs",
+      "category_label": "Documentation & limites",
+      "detail": "Aucun document d'architecture/modèle de menace structuré identifié.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "DOC-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Une architecture non documentée rend l'audit des flux, des données et des privilèges dépendant de la lecture du code seul.",
+      "remediation": "Documenter composants, flux de données, frontières de confiance et contre-mesures, avec schéma versionné.",
+      "severity": "medium",
+      "status": "warn",
+      "title": "Architecture et modèle de sécurité documentés"
+    },
+    {
+      "category": "docs",
+      "category_label": "Documentation & limites",
+      "detail": "Aucune promesse de conformité/certification non étayée détectée dans le README.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "DOC-04",
+      "mapping": {
+        "ai_act": [
+          "art. 26"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI09"
+        ]
+      },
+      "rationale": "Une promesse de certification ou de couverture non vérifiable est un risque réputationnel et un signal de vente trompeur.",
+      "remediation": "Relier chaque claim de maturité à un artefact reproductible (ledger, manifeste, rapport daté) ou la retirer.",
+      "severity": "medium",
+      "status": "pass",
+      "title": "Hygiène des promesses : claims adossées à des preuves"
+    },
+    {
+      "category": "egress",
+      "category_label": "Égress réseau & SSRF",
+      "detail": "Aucun contrôle d'égress réseau (allowlist ou blocklist) détecté.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "EGRESS-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "rationale": "Un agent avec un accès réseau sortant non borné peut exfiltrer des données ou joindre un service interne.",
+      "remediation": "Définir une allowlist de domaines par outil, l'appliquer avant chaque requête et journaliser les refus.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Allowlist d'égress réseau des outils de l'agent"
+    },
+    {
+      "category": "egress",
+      "category_label": "Égress réseau & SSRF",
+      "detail": "Aucune protection SSRF détectée autour des outils réseau/web_fetch.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "EGRESS-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "rationale": "Sans blocage des hôtes internes/métadonnées, un web_fetch devient un proxy vers le réseau interne (SSRF).",
+      "remediation": "Bloquer localhost, IP privées, link-local, métadonnées cloud et variantes d'encodage ; résoudre puis vérifier l'IP.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Protection SSRF du fetcher web"
+    },
+    {
+      "category": "egress",
+      "category_label": "Égress réseau & SSRF",
+      "detail": "Aucun outil de fetch réseau détecté.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "EGRESS-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "rationale": "Un fetch sans borne peut bloquer la boucle de l'agent ou charger des réponses arbitrairement grosses.",
+      "remediation": "Configurer un timeout de connexion/lecture et une taille maximale de réponse, avec échec propre.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Timeouts et bornes de taille sur les appels réseau"
+    },
+    {
+      "category": "egress",
+      "category_label": "Égress réseau & SSRF",
+      "detail": "Aucun outil de fetch réseau détecté.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "EGRESS-04",
+      "mapping": {
+        "ai_act": [
+          "art. 12"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI05"
+        ]
+      },
+      "rationale": "Sans trace d'égress (URL, acteur, décision), une exfiltration de données est invisible en audit.",
+      "remediation": "Émettre un événement d'audit pour chaque requête sortante, avec URL normalisée et acteur, et alerter sur les refus.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Traçabilité des accès réseau sortants"
+    },
+    {
+      "category": "egress",
+      "category_label": "Égress réseau & SSRF",
+      "detail": "Aucune politique d'exécution à évaluer pour le blocage des binaires réseau.",
+      "evidence": [],
+      "horizon": "90 jours",
+      "id": "EGRESS-05",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05"
+        ]
+      },
+      "rationale": "Bloquer curl/wget ferme le contournement le plus simple de la politique d'égress par un tool shell.",
+      "remediation": "Ajouter curl/wget/nc/socat à la liste des commandes bloquées et tester ce blocage en CI.",
+      "severity": "low",
+      "status": "unknown",
+      "title": "Binaires réseau directs bloqués (curl/wget)"
+    },
+    {
+      "category": "evals",
+      "category_label": "Évaluations & tests",
+      "detail": "Suite de tests réduite (1 fichier(s)).",
+      "evidence": [
+        {
+          "excerpt": "",
+          "file": "tests/test_cache.py",
+          "line": null,
+          "location": "tests/test_cache.py"
+        }
+      ],
+      "horizon": "30 jours",
+      "id": "EVAL-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "rationale": "Sans tests reproductibles, aucune affirmation de qualité de l'agent ne peut être vérifiée par un tiers.",
+      "remediation": "Maintenir une suite de tests exécutable hors ligne et la faire tourner sur chaque changement.",
+      "severity": "high",
+      "status": "warn",
+      "title": "Suite de tests automatisés"
+    },
+    {
+      "category": "evals",
+      "category_label": "Évaluations & tests",
+      "detail": "Aucune évaluation agentique dédiée (benchmark/eval harness) identifiée.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "EVAL-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "rationale": "Les tests unitaires ne mesurent pas la qualité décisionnelle d'un agent ; il faut des scénarios de bout en bout.",
+      "remediation": "Construire un eval harness avec scénarios, oracles déterministes et seuils de réussite publiés.",
+      "severity": "medium",
+      "status": "warn",
+      "title": "Évaluations spécifiques à l'agent"
+    },
+    {
+      "category": "evals",
+      "category_label": "Évaluations & tests",
+      "detail": "Aucun scénario de sécurité adversarial identifié dans les évaluations.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "EVAL-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI01",
+          "ASI02"
+        ]
+      },
+      "rationale": "Les défenses non éprouvées par des scénarios adversariaux sont des intentions, pas des garanties.",
+      "remediation": "Ajouter des cas d'injection, d'exfiltration et d'abus d'outils à la suite d'évaluation.",
+      "severity": "medium",
+      "status": "warn",
+      "title": "Scénarios de sécurité et red-team"
+    },
+    {
+      "category": "evals",
+      "category_label": "Évaluations & tests",
+      "detail": "Aucune CI exécutant les tests : les garanties ne sont pas vérifiées à chaque changement.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "EVAL-04",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Une suite de tests non exécutée automatiquement ne protège pas contre les régressions.",
+      "remediation": "Configurer une CI qui exécute tests, lint et scans de sécurité sur chaque PR, avec artifacts archivés.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Tests exécutés en CI"
+    },
+    {
+      "category": "evals",
+      "category_label": "Évaluations & tests",
+      "detail": "Aucun artefact de preuve (couverture, ledger CI, résultats) versionné pour les évaluations.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "EVAL-05",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Un résultat CI non archivé/vérifiable est une affirmation, pas une preuve : l'audit doit pouvoir le rejouer.",
+      "remediation": "Publier un ledger d'exécution (commit, environnement, résultat, manifeste SHA-256) attaché à chaque run.",
+      "severity": "medium",
+      "status": "fail",
+      "title": "Artefacts de preuve CI versionnés ou vérifiables"
+    },
+    {
+      "category": "hitl",
+      "category_label": "Supervision humaine",
+      "detail": "Aucun mécanisme d'approbation humaine (HITL) détecté.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "HITL-01",
+      "mapping": {
+        "ai_act": [
+          "art. 14"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI09",
+          "ASI10"
+        ]
+      },
+      "rationale": "AI Act art. 14 exige une supervision humaine effective : un agent sans canal d'approbation ne peut pas être supervisé.",
+      "remediation": "Exposer un canal d'approbation (CLI, API, notification) permettant d'approuver, refuser ou interrompre une action.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Mécanisme d'approbation humaine présent"
+    },
+    {
+      "category": "hitl",
+      "category_label": "Supervision humaine",
+      "detail": "Aucun handler d'outil à haut risque identifié.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "HITL-02",
+      "mapping": {
+        "ai_act": [
+          "art. 14",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI09"
+        ]
+      },
+      "rationale": "Une revue humaine déclarative ne protège pas si shell, écriture et réseau s'exécutent sans garde-fou technique.",
+      "remediation": "Insérer un point de passage d'approbation dans les handlers à risque (shell, écriture, egress) avant exécution.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Actions à haut risque soumises à approbation"
+    },
+    {
+      "category": "hitl",
+      "category_label": "Supervision humaine",
+      "detail": "Aucune persistance des décisions d'approbation (impossible de prouver qui a approuvé quoi).",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "HITL-03",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 14"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI09"
+        ]
+      },
+      "rationale": "Prouver qui a approuvé quelle action à quel moment est indispensable en audit et en gestion d'incident.",
+      "remediation": "Persister chaque demande et réponse d'approbation (identité, horodatage, action, décision) dans le journal d'audit.",
+      "severity": "medium",
+      "status": "fail",
+      "title": "Décisions d'approbation persistées"
+    },
+    {
+      "category": "hitl",
+      "category_label": "Supervision humaine",
+      "detail": "Aucun mécanisme d'approbation à évaluer.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "HITL-04",
+      "mapping": {
+        "ai_act": [
+          "art. 14"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.9.2"
+        ],
+        "owasp_agentic": [
+          "ASI09",
+          "ASI10"
+        ]
+      },
+      "rationale": "Si l'absence d'humain vaut acceptation, toute coupure du canal d'approbation devient une porte dérobée.",
+      "remediation": "Refuser par défaut toute action soumise à approbation lorsque l'humain est absent ou le canal en erreur.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Comportement fail-closed sans humain disponible"
+    },
+    {
+      "category": "integrity",
+      "category_label": "Intégrité & artefacts",
+      "detail": "Aucun fichier d'empreinte d'intégrité (KERNEL_HASH/SHA256SUMS) détecté.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "INTEGRITY-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI10",
+          "ASI04"
+        ]
+      },
+      "rationale": "Une empreinte SHA-256 committée permet de détecter toute altération du noyau/prompt constitutionnel de l'agent.",
+      "remediation": "Committer KERNEL_HASH.txt (ou SHA256SUMS) et le régénérer dans le commit qui modifie le fichier protégé.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Baseline d'intégrité présent et valide"
+    },
+    {
+      "category": "integrity",
+      "category_label": "Intégrité & artefacts",
+      "detail": "Aucun baseline d'intégrité à faire respecter.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "INTEGRITY-02",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI10"
+        ]
+      },
+      "rationale": "Un baseline jamais comparé au démarrage est une décoration : la dérive du noyau passe inaperçue.",
+      "remediation": "Vérifier l'empreinte au démarrage (ou à chaque exécution du noyau) et refuser de démarrer en cas d'écart.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Vérification d'intégrité active à l'exécution"
+    },
+    {
+      "category": "integrity",
+      "category_label": "Intégrité & artefacts",
+      "detail": "Aucune CI à évaluer pour l'intégrité.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "INTEGRITY-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI10"
+        ]
+      },
+      "rationale": "Un contrôle local peut être contourné ; le refaire en CI garantit que le repo livré correspond aux empreintes.",
+      "remediation": "Ajouter une étape CI `sha256sum -c` (ou script dédié) et la rendre bloquante.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Intégrité contrôlée en CI"
+    },
+    {
+      "category": "logging",
+      "category_label": "Journalisation & audit trail",
+      "detail": "Aucun journal d'audit structuré (AuditLogger / append-only) détecté.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "LOG-01",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "rationale": "AI Act art. 12 et ISO 42001 exigent de pouvoir reconstituer les événements du système ; un log applicatif ne suffit pas.",
+      "remediation": "Écrire un événement structuré (acteur, action, ressource, statut, horodatage) dans un journal append-only.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Journal d'audit structuré et append-only"
+    },
+    {
+      "category": "logging",
+      "category_label": "Journalisation & audit trail",
+      "detail": "Aucun identifiant de corrélation (trace_id/request_id) propagé dans les logs.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "LOG-02",
+      "mapping": {
+        "ai_act": [
+          "art. 12"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "rationale": "Sans trace_id commun, une chaîne multi-étapes (prompt → outil → réponse) n'est pas reconstructible après incident.",
+      "remediation": "Générer un trace_id par requête/run et le propager dans tous les logs, spans et reçus d'outils.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Identifiant de corrélation propagé entre actions"
+    },
+    {
+      "category": "logging",
+      "category_label": "Journalisation & audit trail",
+      "detail": "Aucune preuve d'inviolabilité (chaîne de hachage, signature) pour le journal d'audit.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "LOG-03",
+      "mapping": {
+        "ai_act": [
+          "art. 12"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08",
+          "ASI10"
+        ]
+      },
+      "rationale": "Un audit trail modifiable sans trace ne vaut pas preuve : l'altération des logs est le premier réflexe après un incident.",
+      "remediation": "Enchaîner les événements par hash (prev_hash), sceller périodiquement la chaîne dans un manifeste SHA-256 et vérifier en CI.",
+      "severity": "critical",
+      "status": "fail",
+      "title": "Preuve d'inviolabilité du journal (chaîne de hachage/signature)"
+    },
+    {
+      "category": "logging",
+      "category_label": "Journalisation & audit trail",
+      "detail": "Aucune politique de rétention/rotation des journaux d'audit détectée.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "LOG-04",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "rationale": "Une rétention non définie viole les obligations de conservation (AI Act art. 26) ou expose des données trop longtemps.",
+      "remediation": "Définir une durée de conservation par type de journal, activer la rotation et documenter la procédure.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Politique de rétention et de rotation des journaux"
+    },
+    {
+      "category": "logging",
+      "category_label": "Journalisation & audit trail",
+      "detail": "Aucune rédaction/masquage des secrets et données personnelles dans les journaux.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "LOG-05",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.7.4",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI06"
+        ]
+      },
+      "rationale": "Un journal qui capture prompts, tokens ou données clients devient à son tour une fuite de données.",
+      "remediation": "Masquer les secrets/PII à l'émission du log, tester la sortie des journaux sur un corpus de canaris.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Rédaction des secrets et données personnelles dans les logs"
+    },
+    {
+      "category": "logging",
+      "category_label": "Journalisation & audit trail",
+      "detail": "Aucun mécanisme d'ordre/séquence d'événements à évaluer.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "LOG-06",
+      "mapping": {
+        "ai_act": [
+          "art. 12"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "rationale": "La seule empreinte d'intégrité ne prouve pas l'ordre ; une séquence monotone permet de détecter insertion/suppression.",
+      "remediation": "Numéroter les événements dans leur trace et refuser les numéros non monotones à la vérification.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Ordre des événements vérifiable (séquence/trace)"
+    },
+    {
+      "category": "mcp",
+      "category_label": "MCP & intégrations",
+      "detail": "Aucune intégration MCP détectée dans le dépôt.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "MCP-01",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI07"
+        ]
+      },
+      "rationale": "Sans fichier de configuration MCP versionné, les serveurs connectés et leurs droits ne sont ni revus ni auditables.",
+      "remediation": "Versionner une configuration MCP (mcp.json / claude_desktop_config.json) avec serveurs, transports et variables d'environnement.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Configuration MCP auditable et versionnée"
+    },
+    {
+      "category": "mcp",
+      "category_label": "MCP & intégrations",
+      "detail": "Aucune dépendance MCP déclarée.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "MCP-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Un SDK MCP non épinglé casse les points d'entrée et fait entrer du code non revu à chaque installation.",
+      "remediation": "Épingler mcp==<version> ou borner mcp>=x,<y et tester l'installation en CI.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "SDK MCP épinglé (version ou borne supérieure)"
+    },
+    {
+      "category": "mcp",
+      "category_label": "MCP & intégrations",
+      "detail": "Aucune configuration MCP à analyser (voir MCP-01).",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "MCP-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI02"
+        ]
+      },
+      "rationale": "Un serveur MCP lancé via npx -y ou une image flottante exécute du code tiers non déterministe.",
+      "remediation": "Épingler la version du paquet/image, préférer un serveur auto-hébergé, documenter la provenance.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Serveurs MCP tiers épinglés (pas de npx -y / @latest)"
+    },
+    {
+      "category": "mcp",
+      "category_label": "MCP & intégrations",
+      "detail": "Aucune configuration MCP à analyser.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "MCP-04",
+      "mapping": {
+        "ai_act": [
+          "art. 15",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI07"
+        ]
+      },
+      "rationale": "Un serveur MCP distant sans authentification expose les outils de l'agent à tout appelant du réseau.",
+      "remediation": "Exiger un token/OAuth pour tout transport HTTP/SSE, restreindre les scopes et journaliser les appels.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Authentification des serveurs MCP distants"
+    },
+    {
+      "category": "mcp",
+      "category_label": "MCP & intégrations",
+      "detail": "Aucun serveur MCP exposant des outils détecté.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "MCP-05",
+      "mapping": {
+        "ai_act": [
+          "art. 14",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI08"
+        ]
+      },
+      "rationale": "Exposer shell, écriture et réseau au même client MCP élève le risque d'usage abusif (ASI02).",
+      "remediation": "Classer les outils par risque, n'exposer que le nécessaire par client, exiger une approbation pour les outils destructeurs.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Surface d'outils MCP au moindre privilège"
+    },
+    {
+      "category": "models",
+      "category_label": "Pinning modèles & versions",
+      "detail": "Aucune référence de modèle explicite dans le dépôt.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "MODEL-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "rationale": "Un alias (« sonnet », « pro ») ou un preview peut changer de modèle sans changement de code, rendant l'audit non reproductible.",
+      "remediation": "Épingler les identifiants complets (claude-sonnet-4-6, gemini-2.5-pro) et les mettre à jour par revue explicite.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Identifiants de modèles explicitement versionnés"
+    },
+    {
+      "category": "models",
+      "category_label": "Pinning modèles & versions",
+      "detail": "Aucun registre central des modèles : les identifiants sont dispersés dans la configuration.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "MODEL-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Sans source unique, les versions réellement utilisées varient entre environnements et échappent à la revue.",
+      "remediation": "Centraliser fournisseurs, modèles, fallbacks et statuts dans un registre versionné et généré.",
+      "severity": "medium",
+      "status": "warn",
+      "title": "Registre central des modèles et fournisseurs"
+    },
+    {
+      "category": "models",
+      "category_label": "Pinning modèles & versions",
+      "detail": "Le modèle réellement utilisé par les appels n'est pas journalisé : décision non attribuable.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "MODEL-03",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "rationale": "Sans modèle journalisé, il est impossible de relier une sortie à la version du modèle qui l'a produite.",
+      "remediation": "Émettre le modèle et sa version dans chaque trace/log d'appel LLM (OpenTelemetry GenAI semconv).",
+      "severity": "high",
+      "status": "fail",
+      "title": "Modèle réellement utilisé tracé par appel"
+    },
+    {
+      "category": "models",
+      "category_label": "Pinning modèles & versions",
+      "detail": "Aucune référence de modèle à évaluer.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "MODEL-04",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "rationale": "Un fallback non documenté peut dégrader silencieusement la politique de sécurité ou de coût.",
+      "remediation": "Déclarer les fallbacks par fournisseur, les tester en canari et les journaliser lorsqu'ils s'activent.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Fallback de modèle/fournisseur déclaré"
+    },
+    {
+      "category": "privacy",
+      "category_label": "Données personnelles",
+      "detail": "Aucune détection ni rédaction PII identifiée : prompts et logs peuvent contenir des données clients.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "PRIVACY-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.7.4",
+          "A.5.2"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI06"
+        ]
+      },
+      "rationale": "Un agent support client manipule noms, emails et historiques : sans redaction, ils finissent dans les logs et les prompts.",
+      "remediation": "Détecter (regex/classifieur) et masquer les PII avant persistance, prompt distant et journalisation.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Détection et rédaction des données personnelles"
+    },
+    {
+      "category": "privacy",
+      "category_label": "Données personnelles",
+      "detail": "Aucune procédure de rétention/effacement des données personnelles détectée.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "PRIVACY-02",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "A.7.4",
+          "A.9.2"
+        ],
+        "owasp_agentic": [
+          "ASI06"
+        ]
+      },
+      "rationale": "Le RGPD impose une durée de conservation et un droit à l'effacement ; AI Act art. 26 implique de borner les logs.",
+      "remediation": "Définir une politique de rétention par donnée, implémenter suppression/export et documenter les durées.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Rétention et effacement des données"
+    },
+    {
+      "category": "privacy",
+      "category_label": "Données personnelles",
+      "detail": "Aucun élément de chiffrement au repos ou de local-first identifié.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "PRIVACY-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.7.4",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI03"
+        ]
+      },
+      "rationale": "Les mémoires et journaux de l'agent contiennent du contexte client : non chiffrés, ils amplifient toute fuite.",
+      "remediation": "Chiffrer les stores sensibles au repos, documenter les flux de données et privilégier le local-first.",
+      "severity": "medium",
+      "status": "warn",
+      "title": "Chiffrement / local-first des données de l'agent"
+    },
+    {
+      "category": "privacy",
+      "category_label": "Données personnelles",
+      "detail": "Aucune documentation RGPD/AI Act : la base de conformité de l'agent n'est pas démontrée.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "PRIVACY-04",
+      "mapping": {
+        "ai_act": [
+          "art. 26",
+          "art. 50"
+        ],
+        "iso_42001": [
+          "4.1",
+          "A.5.2",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI09"
+        ]
+      },
+      "rationale": "Le déployeur (art. 26) doit informer et documenter ; un document de conformité vérifiable est attendu dans une PME régulée.",
+      "remediation": "Produire une cartographie des traitements, les rôles, la base légale, la DPIA et les mesures techniques.",
+      "severity": "medium",
+      "status": "fail",
+      "title": "Documentation RGPD/AI Act utilisable par le client"
+    },
+    {
+      "category": "prompts",
+      "category_label": "Prompts système & injection",
+      "detail": "Aucun fichier de prompt système versionné identifié.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "PROMPT-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI01"
+        ]
+      },
+      "rationale": "Des prompts noyés dans le code ou modifiables sans trace rendent les changements de comportement inauditables.",
+      "remediation": "Extraire les prompts dans un répertoire dédié versionné, avec un identifiant de version par prompt.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Prompts système isolés et versionnés"
+    },
+    {
+      "category": "prompts",
+      "category_label": "Prompts système & injection",
+      "detail": "Aucune défense anti-injection (InputGuard, patterns, sanitisation) détectée dans le code.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "PROMPT-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI01",
+          "ASI06"
+        ]
+      },
+      "rationale": "Le contenu utilisateur ou externe peut détourner l'agent (ASI01) si aucune barrière d'entrée n'existe.",
+      "remediation": "Implémenter un garde d'entrée (patterns, normalisation Unicode, scoring) et l'appliquer à tout contenu non fiable.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Défense contre l'injection de prompt dans le code"
+    },
+    {
+      "category": "prompts",
+      "category_label": "Prompts système & injection",
+      "detail": "Aucun marquage du contenu non fiable (documents, résultats d'outils) avant le prompt.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "PROMPT-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI01",
+          "ASI06"
+        ]
+      },
+      "rationale": "Sans délimitation explicite, un document ou un résultat d'outil peut être interprété comme instruction.",
+      "remediation": "Baliser chaque contenu externe (source, contexte RAG, sortie d'outil) et indiquer qu'il n'est pas une instruction.",
+      "severity": "medium",
+      "status": "fail",
+      "title": "Contenu non fiable balisé avant le prompt (spotlighting)"
+    },
+    {
+      "category": "prompts",
+      "category_label": "Prompts système & injection",
+      "detail": "Aucun filtre de sortie/protection contre la fuite du prompt système détecté.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "PROMPT-04",
+      "mapping": {
+        "ai_act": [
+          "art. 50"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.8.2"
+        ],
+        "owasp_agentic": [
+          "ASI01",
+          "ASI09"
+        ]
+      },
+      "rationale": "La divulgation du prompt système expose les règles internes et facilite le contournement des garde-fous.",
+      "remediation": "Détecter les fuites dans les réponses du modèle et masquer les sections sensibles avant affichage.",
+      "severity": "medium",
+      "status": "fail",
+      "title": "Protection contre la fuite du prompt système"
+    },
+    {
+      "category": "prompts",
+      "category_label": "Prompts système & injection",
+      "detail": "Aucun test de régression dédié à l'injection de prompt identifié.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "PROMPT-05",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.3",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI01"
+        ]
+      },
+      "rationale": "Une défense non testée régresse silencieusement à chaque changement de modèle ou de prompt.",
+      "remediation": "Ajouter des cas de test d'injection connus (jailbreak, instruction override) exécutés en CI.",
+      "severity": "medium",
+      "status": "warn",
+      "title": "Tests de régression sur l'injection de prompt"
+    },
+    {
+      "category": "providers",
+      "category_label": "Fournisseurs & failover",
+      "detail": "Aucun fournisseur de modèle identifiable.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "PROVIDER-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "rationale": "Un agent mono-fournisseur subit les pannes, changements de politique et hausses de prix sans recours.",
+      "remediation": "Supporter au moins deux fournisseurs, documenter les différences de garanties et de localisation des données.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Diversité des fournisseurs de modèles"
+    },
+    {
+      "category": "providers",
+      "category_label": "Fournisseurs & failover",
+      "detail": "Aucun mécanisme de bascule fournisseur à évaluer.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "PROVIDER-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI08"
+        ]
+      },
+      "rationale": "Sans bascule contrôlée, une indisponibilité fournisseur provoque une panne totale ou un comportement dégradé silencieux.",
+      "remediation": "Implémenter retry borné, bascule vers un modèle secondaire déclaré et coupe-circuit avec alerte.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Failover et coupe-circuit fournisseur"
+    },
+    {
+      "category": "providers",
+      "category_label": "Fournisseurs & failover",
+      "detail": "Aucun canari de santé fournisseur : une panne ou une dérive de modèle ne serait détectée qu'en production.",
+      "evidence": [],
+      "horizon": "90 jours",
+      "id": "PROVIDER-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04",
+          "ASI08"
+        ]
+      },
+      "rationale": "Les modèles évoluent côté fournisseur : un canari détecte la dérive avant qu'un client ne la subisse.",
+      "remediation": "Exécuter périodiquement des requêtes canaris par fournisseur, comparer aux seuils et archiver les résultats.",
+      "severity": "low",
+      "status": "warn",
+      "title": "Canaris de santé des fournisseurs"
+    },
+    {
+      "category": "sandbox",
+      "category_label": "Sandbox & containment",
+      "detail": "Aucune définition de conteneur (Dockerfile/compose) : containment non évalué.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SANDBOX-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05"
+        ]
+      },
+      "rationale": "Un agent qui exécute des outils doit tourner dans un environnement isolé et reproductible, pas sur l'hôte.",
+      "remediation": "Fournir un Dockerfile/compose officiel pour l'exécution de l'agent et documenter son usage.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Définition de conteneur d'exécution"
+    },
+    {
+      "category": "sandbox",
+      "category_label": "Sandbox & containment",
+      "detail": "Aucun Dockerfile à analyser.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SANDBOX-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05"
+        ]
+      },
+      "rationale": "Le root dans un conteneur facilite l'évasion et l'impact en cas d'exécution de code arbitraire.",
+      "remediation": "Créer un utilisateur applicatif, copier le code avec les bons droits et déclarer USER dans le Dockerfile.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Conteneur exécuté en utilisateur non-root"
+    },
+    {
+      "category": "sandbox",
+      "category_label": "Sandbox & containment",
+      "detail": "Aucun fichier de conteneur à analyser.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SANDBOX-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05",
+          "ASI02"
+        ]
+      },
+      "rationale": "Un conteneur non durci partage des capabilities et un système de fichiers inscriptible exploitables par l'agent.",
+      "remediation": "Ajouter cap_drop, no-new-privileges, seccomp, read_only et un tmpfs dédié dans la définition de conteneur.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Durcissement runtime (seccomp, capabilities, filesystem)"
+    },
+    {
+      "category": "sandbox",
+      "category_label": "Sandbox & containment",
+      "detail": "Aucune exécution hôte à évaluer (ou aucun outil d'exécution détecté).",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SANDBOX-04",
+      "mapping": {
+        "ai_act": [
+          "art. 14",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05",
+          "ASI10"
+        ]
+      },
+      "rationale": "Si l'agent peut exécuter sur l'hôte sans opt-in, le containment devient une simple convention.",
+      "remediation": "Désactiver l'exécution hôte par défaut, exiger un flag explicite et l'afficher dans les logs d'audit.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Exécution hôte sur opt-in explicite"
+    },
+    {
+      "category": "sandbox",
+      "category_label": "Sandbox & containment",
+      "detail": "Aucun fichier compose à analyser.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "SANDBOX-05",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI05",
+          "ASI07"
+        ]
+      },
+      "rationale": "Un agent conteneurisé mais sur le réseau hôte ou exposant Redis sans mot de passe garde une surface d'attaque interne.",
+      "remediation": "Isoler les réseaux, ne pas publier les services internes, activer l'authentification des stores.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Isolation réseau du conteneur"
+    },
+    {
+      "category": "secrets",
+      "category_label": "Secrets & identifiants",
+      "detail": "Aucune clé API en clair détectée dans 8 fichiers texte analysés.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SECRET-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI04"
+        ]
+      },
+      "rationale": "Un secret commité est exposé à toute personne ayant accès au code, à l'historique et aux sauvegardes.",
+      "remediation": "Révoquer la clé concernée, la charger par variable d'environnement ou coffre, et ajouter un scan de secrets en CI.",
+      "severity": "critical",
+      "status": "pass",
+      "title": "Aucune clé API ou token en clair dans le dépôt"
+    },
+    {
+      "category": "secrets",
+      "category_label": "Secrets & identifiants",
+      "detail": "Aucun bloc de clé privée (PEM/OpenSSH/PGP) trouvé.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SECRET-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI03",
+          "ASI04"
+        ]
+      },
+      "rationale": "Une clé privée exposée permet l'usurpation d'identité des services de l'agent (providers, MCP, infra).",
+      "remediation": "Supprimer le fichier du dépôt et de l'historique (filter-repo), révoquer, rotater, stocker dans un coffre.",
+      "severity": "critical",
+      "status": "pass",
+      "title": "Aucune clé privée ou certificat sensible commité"
+    },
+    {
+      "category": "secrets",
+      "category_label": "Secrets & identifiants",
+      "detail": "Aucun fichier d'environnement présent, mais .gitignore ne couvre pas .env/credentials.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SECRET-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Un .env suivi par git contourne les coffres à secrets et fuite à chaque clone ou fork.",
+      "remediation": "Ajouter .env, *.pem, *.key et credentials.json au .gitignore, fournir un .env.example sans valeurs.",
+      "severity": "high",
+      "status": "warn",
+      "title": "Fichiers d'environnement absents ou exclus du versionnement"
+    },
+    {
+      "category": "secrets",
+      "category_label": "Secrets & identifiants",
+      "detail": "Aucune documentation de gestion des secrets (variables d'environnement, rotation, coffre).",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "SECRET-04",
+      "mapping": {
+        "ai_act": [
+          "art. 15",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "A.2.2",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Sans procédure documentée, la rotation et la révocation d'un secret ne sont pas reproductibles en incident.",
+      "remediation": "Documenter le chargement des secrets, la rotation, les contacts d'urgence et l'interdiction de commit.",
+      "severity": "medium",
+      "status": "fail",
+      "title": "Gestion des secrets documentée (variables d'environnement, rotation)"
+    },
+    {
+      "category": "supply",
+      "category_label": "Supply chain",
+      "detail": "Aucune déclaration de dépendance exploitable trouvée.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SUPPLY-01",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Une dépendance non bornée peut casser l'agent ou introduire du code non revu à chaque installation (ASI04).",
+      "remediation": "Épingler les versions critiques ou borner <major+1, et produire un lockfile.",
+      "severity": "critical",
+      "status": "unknown",
+      "title": "Dépendances épinglées (version exacte ou borne supérieure)"
+    },
+    {
+      "category": "supply",
+      "category_label": "Supply chain",
+      "detail": "Aucune dépendance à verrouiller.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SUPPLY-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.6.2.4",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Sans lockfile, deux installations du même commit peuvent exécuter des dépendances différentes.",
+      "remediation": "Versionner uv.lock/poetry.lock/requirements compilé et l'utiliser en CI et en production.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Lockfile versionné"
+    },
+    {
+      "category": "supply",
+      "category_label": "Supply chain",
+      "detail": "Aucune CI à évaluer.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SUPPLY-03",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Un bandit ne détecte pas une CVE de dépendance : il faut un audit dédié (pip-audit, OSV, Trivy).",
+      "remediation": "Ajouter pip-audit (ou OSV-Scanner/Trivy) en CI, échouer sur les vulnérabilités high/critical et archiver le rapport.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Scan de vulnérabilités des dépendances en CI"
+    },
+    {
+      "category": "supply",
+      "category_label": "Supply chain",
+      "detail": "Aucun workflow GitHub Actions.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "SUPPLY-04",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Une action référencée par tag peut être déplacée par un tiers et exécuter du code dans votre CI.",
+      "remediation": "Référencer chaque action par son SHA de commit complet et mettre à jour via Dependabot.",
+      "severity": "high",
+      "status": "unknown",
+      "title": "Actions CI épinglées par SHA de commit"
+    },
+    {
+      "category": "supply",
+      "category_label": "Supply chain",
+      "detail": "Aucune image de base (Dockerfile) à évaluer.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "SUPPLY-05",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Un tag d'image peut être réécrit ; seul un digest garantit que l'image auditée est celle exécutée.",
+      "remediation": "Utiliser image@sha256:<digest> dans le Dockerfile et mettre à jour via un bot dédié.",
+      "severity": "medium",
+      "status": "unknown",
+      "title": "Images de base épinglées par digest"
+    },
+    {
+      "category": "supply",
+      "category_label": "Supply chain",
+      "detail": "Aucune dépendance à mettre à jour.",
+      "evidence": [],
+      "horizon": "90 jours",
+      "id": "SUPPLY-06",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "9.1",
+          "A.10.1"
+        ],
+        "owasp_agentic": [
+          "ASI04"
+        ]
+      },
+      "rationale": "Les correctifs de sécurité de dépendances n'arrivent que si la mise à jour est suivie et testée régulièrement.",
+      "remediation": "Activer Dependabot/Renovate avec tests CI obligatoires avant merge.",
+      "severity": "low",
+      "status": "unknown",
+      "title": "Automatisation des mises à jour de dépendances"
+    },
+    {
+      "category": "tools",
+      "category_label": "Permissions d'outils",
+      "detail": "Aucune politique centrale de permissions/validation des commandes d'outils détectée.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "TOOL-01",
+      "mapping": {
+        "ai_act": [
+          "art. 14",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "rationale": "Sans politique centralisée, chaque outil décide seul de ses limites et les contournements prolifèrent.",
+      "remediation": "Centraliser validation de commandes, chemins et accès réseau dans une ExecutionPolicy testée.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Politique centrale de permissions d'outils"
+    },
+    {
+      "category": "tools",
+      "category_label": "Permissions d'outils",
+      "detail": "Aucun outil d'exécution shell détecté dans le dépôt.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "TOOL-02",
+      "mapping": {
+        "ai_act": [
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "rationale": "Un outil shell non validé transforme une injection de prompt en exécution de code arbitraire (RCE).",
+      "remediation": "Faire passer chaque commande par une allowlist/validation (shell=False, parse args) et bloquer les binaires réseau.",
+      "severity": "critical",
+      "status": "pass",
+      "title": "Outils shell/exec gated par validation"
+    },
+    {
+      "category": "tools",
+      "category_label": "Permissions d'outils",
+      "detail": "Aucun garde de chemins (containment des écritures) détecté dans le code.",
+      "evidence": [],
+      "horizon": "30 jours",
+      "id": "TOOL-03",
+      "mapping": {
+        "ai_act": [
+          "art. 14",
+          "art. 15"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.7.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI05"
+        ]
+      },
+      "rationale": "Un agent doit rester confiné à son workspace ; sinon il peut altérer le code, les prompts ou les secrets.",
+      "remediation": "Résoudre les chemins, vérifier le confinement (workspace/parent), refuser les chemins absolus et protéger les fichiers sensibles.",
+      "severity": "high",
+      "status": "fail",
+      "title": "Containment des écritures fichiers"
+    },
+    {
+      "category": "tools",
+      "category_label": "Permissions d'outils",
+      "detail": "Aucune matrice de permissions par état/agent identifiable ; permissions supposées globales.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "TOOL-04",
+      "mapping": {
+        "ai_act": [
+          "art. 14"
+        ],
+        "iso_42001": [
+          "8.2",
+          "A.6.2.4"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI03"
+        ]
+      },
+      "rationale": "Un agent en phase de réflexion ne doit pas avoir les mêmes droits qu'en phase d'exécution supervisée.",
+      "remediation": "Définir une allowlist par phase/état et par rôle d'agent, vérifiée à chaque appel.",
+      "severity": "medium",
+      "status": "warn",
+      "title": "Permissions d'outils différenciées par état/agent"
+    },
+    {
+      "category": "tools",
+      "category_label": "Permissions d'outils",
+      "detail": "Aucun reçu d'exécution d'outil (commande, sortie, code retour) détecté.",
+      "evidence": [],
+      "horizon": "60 jours",
+      "id": "TOOL-05",
+      "mapping": {
+        "ai_act": [
+          "art. 12",
+          "art. 26"
+        ],
+        "iso_42001": [
+          "8.3",
+          "9.1"
+        ],
+        "owasp_agentic": [
+          "ASI02",
+          "ASI08"
+        ]
+      },
+      "rationale": "Sans reçu (outil, arguments, résultat, code retour), il est impossible de reconstituer une action après incident.",
+      "remediation": "Émettre un événement d'audit par appel d'outil avec identifiant de trace, arguments masqués et digest de résultat.",
+      "severity": "medium",
+      "status": "fail",
+      "title": "Reçus structurés des appels d'outils"
+    }
+  ],
+  "generated_at": "2026-11-05T18:12:45Z",
+  "schema": "agentproof.checks.v1",
+  "summary": {
+    "by_category": {
+      "docs": {
+        "evaluated": 4,
+        "failed": 2,
+        "grade": "E",
+        "label": "Documentation & limites",
+        "passed": 1,
+        "score": 25.0,
+        "unknown": 0,
+        "warnings": 1
+      },
+      "egress": {
+        "evaluated": 2,
+        "failed": 2,
+        "grade": "E",
+        "label": "Égress réseau & SSRF",
+        "passed": 0,
+        "score": 0.0,
+        "unknown": 3,
+        "warnings": 0
+      },
+      "evals": {
+        "evaluated": 5,
+        "failed": 2,
+        "grade": "E",
+        "label": "Évaluations & tests",
+        "passed": 0,
+        "score": 28.6,
+        "unknown": 0,
+        "warnings": 3
+      },
+      "hitl": {
+        "evaluated": 2,
+        "failed": 2,
+        "grade": "E",
+        "label": "Supervision humaine",
+        "passed": 0,
+        "score": 0.0,
+        "unknown": 2,
+        "warnings": 0
+      },
+      "integrity": {
+        "evaluated": 0,
+        "failed": 0,
+        "grade": "—",
+        "label": "Intégrité & artefacts",
+        "passed": 0,
+        "score": null,
+        "unknown": 3,
+        "warnings": 0
+      },
+      "logging": {
+        "evaluated": 5,
+        "failed": 5,
+        "grade": "E",
+        "label": "Journalisation & audit trail",
+        "passed": 0,
+        "score": 0.0,
+        "unknown": 1,
+        "warnings": 0
+      },
+      "mcp": {
+        "evaluated": 0,
+        "failed": 0,
+        "grade": "—",
+        "label": "MCP & intégrations",
+        "passed": 0,
+        "score": null,
+        "unknown": 5,
+        "warnings": 0
+      },
+      "models": {
+        "evaluated": 2,
+        "failed": 1,
+        "grade": "E",
+        "label": "Pinning modèles & versions",
+        "passed": 0,
+        "score": 16.7,
+        "unknown": 2,
+        "warnings": 1
+      },
+      "privacy": {
+        "evaluated": 4,
+        "failed": 3,
+        "grade": "E",
+        "label": "Données personnelles",
+        "passed": 0,
+        "score": 8.3,
+        "unknown": 0,
+        "warnings": 1
+      },
+      "prompts": {
+        "evaluated": 5,
+        "failed": 4,
+        "grade": "E",
+        "label": "Prompts système & injection",
+        "passed": 0,
+        "score": 7.1,
+        "unknown": 0,
+        "warnings": 1
+      },
+      "providers": {
+        "evaluated": 1,
+        "failed": 0,
+        "grade": "D",
+        "label": "Fournisseurs & failover",
+        "passed": 0,
+        "score": 50.0,
+        "unknown": 2,
+        "warnings": 1
+      },
+      "sandbox": {
+        "evaluated": 0,
+        "failed": 0,
+        "grade": "—",
+        "label": "Sandbox & containment",
+        "passed": 0,
+        "score": null,
+        "unknown": 5,
+        "warnings": 0
+      },
+      "secrets": {
+        "evaluated": 4,
+        "failed": 1,
+        "grade": "B",
+        "label": "Secrets & identifiants",
+        "passed": 2,
+        "score": 79.3,
+        "unknown": 0,
+        "warnings": 1
+      },
+      "supply": {
+        "evaluated": 0,
+        "failed": 0,
+        "grade": "—",
+        "label": "Supply chain",
+        "passed": 0,
+        "score": null,
+        "unknown": 6,
+        "warnings": 0
+      },
+      "tools": {
+        "evaluated": 5,
+        "failed": 3,
+        "grade": "D",
+        "label": "Permissions d'outils",
+        "passed": 1,
+        "score": 41.1,
+        "unknown": 0,
+        "warnings": 1
+      }
+    },
+    "evaluated": 39,
+    "finding_counts_by_severity": {
+      "critical": 1,
+      "high": 19,
+      "info": 0,
+      "low": 1,
+      "medium": 14
+    },
+    "grade": "E",
+    "grade_label": "Insuffisant",
+    "score": 25.0,
+    "status_counts": {
+      "fail": 25,
+      "pass": 4,
+      "unknown": 29,
+      "warn": 10
+    },
+    "unknown": 29
+  },
+  "target": {
+    "commit": null,
+    "files_text_analyzed": 8,
+    "files_total": 8,
+    "name": "pristine",
+    "path": "/private/var/folders/2c/92cnz9_x3fjcph_b4570j8140000gn/T/swarmproof-run-b_rz_zuo/pristine",
+    "skipped_binary": 0,
+    "skipped_large": 0
+  },
+  "tool": {
+    "name": "agentproof",
+    "version": "1.0.0"
+  }
+}

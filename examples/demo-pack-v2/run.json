@@ -1,0 +1,222 @@
+{
+  "call_budget": {
+    "exhausted_events": 0,
+    "max_calls": 3,
+    "remaining": 1,
+    "used": 2
+  },
+  "candidate_sets_found": 1,
+  "candidates": [
+    {
+      "agent_id": "lead_agent",
+      "files": [
+        {
+          "chars": 1025,
+          "path": "src/cache.py"
+        },
+        {
+          "chars": 549,
+          "path": "src/store.py"
+        }
+      ],
+      "n_files": 2,
+      "raw_sha256": "1c56cf49e0ac21dadf5b66d9dd53d09179cd07467a61737d71c8cd73cb12f278",
+      "role": "lead"
+    }
+  ],
+  "changed_files": [
+    "src/cache.py",
+    "src/store.py"
+  ],
+  "command": "<home>/Documents/code/NEXUS/product/swarmproof/swarmproof/__main__.py fix examples/fixture-multi --oracle python -m unittest discover -s tests -v --out examples/demo-pack-v2 --roles codex,claude --timeout 180 --max-retries 1 --max-calls 3",
+  "dry_run": false,
+  "environment": {
+    "cli_versions": {
+      "claude": "2.1.317 (Claude Code)",
+      "codex": "codex-cli 0.166.0"
+    },
+    "executable": "<home>/.local/bin/python3",
+    "platform": "darwin",
+    "python": "3.14.8"
+  },
+  "exit_code": 0,
+  "generated_at": "2026-11-05T18:12:45+00:00",
+  "limits": [
+    "n=1 run, tâche unique : signal de faisabilité, pas de significativité.",
+    "Le verdict dépend entièrement de l'oracle choisi (qualité des tests).",
+    "Preuve technique, pas certification ; supériorité du swarm non prouvée.",
+    "Les réponses des modèles ne sont pas reproductibles à l'identique.",
+    "Le moteur NEXUS est une extraction (copie /tmp) ; swarm-os n'est pas modifié."
+  ],
+  "mode": "lead_support",
+  "model_calls": [
+    {
+      "attempt": 1,
+      "cost_usd": null,
+      "duration_seconds": 21.61,
+      "error": null,
+      "exit_code": 0,
+      "model": null,
+      "output_chars": 1658,
+      "output_sha256": "1c56cf49e0ac21dadf5b66d9dd53d09179cd07467a61737d71c8cd73cb12f278",
+      "prompt_chars": 5457,
+      "prompt_sha256": "10d39c4d5d03e7fefe6e573b4a41894ea9266e1ca836ddd0f3b2ca71f507ff5b",
+      "provider": "codex",
+      "retry": false,
+      "role": "lead",
+      "simulated": false,
+      "timed_out": false,
+      "tokens_in": null,
+      "tokens_out": null,
+      "tokens_total": null
+    },
+    {
+      "attempt": 1,
+      "cost_usd": 0.164584,
+      "duration_seconds": 48.86,
+      "error": null,
+      "exit_code": 0,
+      "model": "claude-opus-5-5",
+      "output_chars": 2646,
+      "output_sha256": "6dd9fe2a47a37dcc57037d4032a1ba06195865eb1c95ad087e8902b30089da01",
+      "prompt_chars": 7182,
+      "prompt_sha256": "19b51039fb059be741706d462ea3caff28e690595dab2443e6f6e516d4557899",
+      "provider": "claude",
+      "retry": false,
+      "role": "support",
+      "simulated": false,
+      "timed_out": false,
+      "tokens_in": 2,
+      "tokens_out": 5204,
+      "tokens_total": null
+    }
+  ],
+  "nexus": {
+    "agent_mapping": {
+      "lead_agent": "codex",
+      "support_agent": "claude"
+    },
+    "build_seconds": 0.032,
+    "declared_status": "SwarmPhase.COMPLETED",
+    "engine_ok": true,
+    "engine_version": {
+      "codename": "COGNITIVE BOOST",
+      "version": "12.4.0"
+    },
+    "errors": [],
+    "outputs": [
+      {
+        "agent_id": "lead_agent",
+        "content_chars": 1658,
+        "content_preview": "--- FILE: src/cache.py ---\n```python\n\"\"\"Cache TTL adossé au Store versionné.\"\"\"\n\nfrom src.store import Store\n\n\nclass TTLCache:\n    \"\"\"Cache mémoire invalidé par version du store et par préfixe de clé.\"\"\"\n\n    def __init__(self, store: Store) -> None:\n        self.store = store\n        self._entries: dict[str, tuple[str, int]] = {}\n\n    def get(self, key: str) -> str | None:\n        entry = self._entries.get(key)\n        if entry is None:\n            return None\n        value, version = entry\n        if version != self.store.version:\n            del self._entries[key]\n            return None\n  ",
+        "content_sha256": "1c56cf49e0ac21dadf5b66d9dd53d09179cd07467a61737d71c8cd73cb12f278",
+        "error": null,
+        "index": 0,
+        "role": "lead",
+        "status": "success",
+        "time_seconds": 21.62
+      },
+      {
+        "agent_id": "support_agent",
+        "content_chars": 2646,
+        "content_preview": "Je relis la solution du lead en déroulant les quatre tests à la main. Comme les outils sont exclus pour cette tâche, la suite n'a pas été exécutée.\n\n**Verdict : solution validée, aucune modification à apporter.** Les deux correctifs traitent les causes racines : `put()` n'incrémentait pas la version, et `invalidate_prefix()` comparait avec `==` au lieu de `startswith`. `src/api.py` et `src/__init__.py` peuvent rester tels quels, car `read_user_name` relit déjà le store quand le cache ne renvoie rien.\n\n## Déroulé des tests\n\n| Test | Déroulé avec le correctif | Résultat prévu |\n|---|---|---|\n| `",
+        "content_sha256": "6dd9fe2a47a37dcc57037d4032a1ba06195865eb1c95ad087e8902b30089da01",
+        "error": null,
+        "index": 1,
+        "role": "support",
+        "status": "success",
+        "time_seconds": 48.86
+      }
+    ],
+    "registry_ids": [
+      "claude",
+      "gemini"
+    ],
+    "selected_mode": "lead_support",
+    "source_path": "<home>/Documents/code/NEXUS/swarm-os",
+    "task_analysis": {
+      "complexity": "COMPLEX",
+      "domains": [
+        "debugging",
+        "coding",
+        "testing",
+        "web_interaction",
+        "general",
+        "writing"
+      ]
+    }
+  },
+  "oracle": {
+    "attempts": 1,
+    "command": "python -m unittest discover -s tests -v",
+    "evidence_reason": "preuve d'exécution: unittest, 4 test(s), marqueur de synthèse présent",
+    "execution_verified": true,
+    "failed_tests": [],
+    "restored_test_paths": [
+      "tests"
+    ],
+    "simulated": false,
+    "test_parser": "unittest",
+    "tests_run": 4,
+    "timeout_seconds": 180.0,
+    "verdict_passed": true
+  },
+  "prepack": {
+    "files_total": 8,
+    "generated_at": "2026-11-05T18:12:45+00:00",
+    "grade": "E",
+    "grade_label": "Insuffisant",
+    "manifest_sha256": "2c3353f093e6239582ac2c2ce73ef2fe7b9f9165c7e0782837d60977dbd64483",
+    "pack_dir": "/private/var/folders/2c/92cnz9_x3fjcph_b4570j8140000gn/T/swarmproof-run-b_rz_zuo/prepack-out/evidence-pack-20261105T181245Z",
+    "repo_commit": null,
+    "score": 25.0,
+    "severity_counts": {
+      "critical": 1,
+      "high": 19,
+      "info": 0,
+      "low": 1,
+      "medium": 14
+    },
+    "status": "ok",
+    "tool": "agentproof",
+    "version": "1.0.0"
+  },
+  "rejected_candidates": [
+    {
+      "agent_id": "support_agent",
+      "detail": "",
+      "reason": "aucun bloc de code complet détecté",
+      "role": "support"
+    }
+  ],
+  "repo": {
+    "commit": null,
+    "name": "fixture-multi",
+    "source_path": "<repo>"
+  },
+  "retries": 0,
+  "roles": {
+    "lead": "codex",
+    "support": "claude"
+  },
+  "schema": "swarmproof/1",
+  "security": {
+    "excluded_secret_files": true,
+    "integrity_scope": "coherence_interne_auto_attestee",
+    "origin_proven": false,
+    "replay_requires_explicit_flag": "--allow-oracle-cmd",
+    "sanitized_paths": true
+  },
+  "tool": {
+    "name": "swarmproof",
+    "version": "0.2.0"
+  },
+  "verdict": "PASS",
+  "verdict_basis": "oracle",
+  "verdict_explain": [
+    "1 candidat(s) jugé(s) par l'oracle externe",
+    "1 tentative(s) PASS"
+  ],
+  "verdict_reason": "oracle PASS sur la tentative 0",
+  "verdict_source": "oracle"
+}

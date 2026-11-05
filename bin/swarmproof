@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Wrapper sans installation : exécute le paquet depuis ce répertoire.
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PYTHONPATH="$HERE${PYTHONPATH:+:$PYTHONPATH}" exec python3 -m swarmproof "$@"

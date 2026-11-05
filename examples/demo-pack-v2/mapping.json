@@ -1,0 +1,17 @@
+{
+  "agent_mapping": {
+    "lead_agent": "codex",
+    "support_agent": "claude"
+  },
+  "candidate_sets": 1,
+  "rejected": 1,
+  "targets": [
+    "src/__init__.py",
+    "src/api.py",
+    "src/cache.py",
+    "src/store.py"
+  ],
+  "test_paths_restored": [
+    "tests"
+  ]
+}
